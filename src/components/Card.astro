@@ -1,11 +1,15 @@
 ---
 //src/components/Card.astro
-const {name, position, aboutMe, linkedin, github, cvLink, profileImage } = Astro.props;
+const {name, position, aboutMe, linkedin, website, instagram, youtube, profileImage } = Astro.props;
 
 import '../styles/card.css';
 ---
 
 <div class="container">
+    <video class="bg-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="/images/background-video.mp4" type="video/mp4" />
+    </video>
+
     <div class="card-container">
         <div class="descripcion">
             <h1>{name}</h1>
@@ -18,18 +22,24 @@ import '../styles/card.css';
                     </span>
                     <i class="bi bi-linkedin"></i>
                 </a>
-                <a href={github} class="hover-text" target="_blank">
-                    <span class="tooltip-text" id="fade">
-                        GitHub
-                    </span>
-                    <i class="bi bi-github"></i>
-                </a>
-                <a href={cvLink} class="hover-text" target="_blank">
-                    <span class="tooltip-text" id="fade">
-                        Resume
-                    </span>
-                    <i class="bi bi-file-earmark-arrow-down"></i>
-                </a>
+                {website && (
+                    <a href={website} class="hover-text" target="_blank" rel="noopener noreferrer" aria-label="Website">
+                        <span class="tooltip-text" id="fade">Website</span>
+                        <i class="bi bi-globe"></i>
+                    </a>
+                )}
+                {instagram && (
+                    <a href={instagram} class="hover-text" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <span class="tooltip-text" id="fade">Instagram</span>
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                )}
+                {youtube && (
+                    <a href={youtube} class="hover-text" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <span class="tooltip-text" id="fade">YouTube</span>
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                )}
             </div>
         </div>
         <div class="image">
